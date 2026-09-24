@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr.Cafe</title>
+
+
+    <!-- Browser tab logo -->
+    <link rel="icon" type="image/png" href="c:\Users\User\Downloads\487789937_652491484196129_921228232833676197_n.jpg">
+
+
+    <!-- Google Fonts: Outfit (Display Headlines) & Plus Jakarta Sans (Clean UI Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cafe: {
+                            bgLight: '#FDFBF7',
+                            bgDark: '#0E0B0A',
+                            cardLight: '#F5EFE6',
+                            cardDark: '#191412',
+                            borderLight: '#EFE6D8',
+                            borderDark: '#28201C',
+                            textLight: '#1C1613',
+                            textDark: '#F3EFEA',
+                            mutedLight: '#6E625A',
+                            mutedDark: '#A39890',
+                            amber: '#D97706',
+                            amberHover: '#B45309',
+                            amberDark: '#F59E0B',
+                            goldGlow: 'rgba(217, 119, 6, 0.25)'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Outfit', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'soft-float': '0 20px 40px -15px rgba(28, 22, 19, 0.07)',
+                        'dark-float': '0 20px 40px -15px rgba(0, 0, 0, 0.6)',
+                        'glow': '0 0 25px rgba(217, 119, 6, 0.35)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Styles & Marquee Keyframes -->
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.025em;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-nav {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        /* Continuous Auto-Scrolling Gallery Marquee */
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marqueeScroll 28s linear infinite;
+        }
+
+        .marquee-container:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+
+        /* Scrollbar customization */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 9999px;
+        }
+
+        /* Custom Pulse Animation */
+        @keyframes softPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.06); opacity: 0.9; }
+        }
+        .animate-pulse-glow {
+            animation: softPulse 2.5s infinite ease-in-out;
+        }
+
+        /* Image hover zoom effect */
+        .card-img-zoom {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-container:hover .card-img-zoom {
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+
+<body class="bg-cafe-bgLight text-cafe-textLight dark:bg-cafe-bgDark dark:text-cafe-textDark transition-colors duration-300 min-h-screen relative overflow-x-hidden selection:bg-cafe-amber selection:text-white">
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scrollProgress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-cafe-amber via-yellow-500 to-amber-600 z-50 transition-all duration-150 w-0"></div>
+
+    <!-- Floating Pill Navigation Bar -->
+    <header class="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-5xl">
+        <nav class="glass-nav bg-white/80 dark:bg-cafe-cardDark/85 border border-cafe-borderLight dark:border-cafe-borderDark shadow-soft-float dark:shadow-dark-float rounded-full px-4 py-2.5 md:px-6 md:py-3 flex items-center justify-between transition-all duration-300">
+            
+            <!-- Brand Logo & Name -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-cafe-amber text-white flex items-center justify-center font-heading font-extrabold text-lg shadow-md group-hover:scale-105 transition-transform">
+                    <img src="c:\Users\User\Downloads\487789937_652491484196129_921228232833676197_n.jpg" alt="Mr. Cafe">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading font-bold text-lg md:text-xl tracking-tight leading-none group-hover:text-cafe-amber transition-colors">
+                        Mr.Cafe
+                    </span>
+                    <span class="text-[10px] text-cafe-mutedLight dark:text-cafe-mutedDark font-medium tracking-wider uppercase">Jaffna</span>
+                </div>
+            </a>
+
+            <!-- Quick Navigation Links (Desktop) -->
+            <div class="hidden md:flex items-center gap-7 text-sm font-semibold text-cafe-mutedLight dark:text-cafe-mutedDark">
+                <a href="#menu" class="hover:text-cafe-amber transition-colors">Menu</a>
+                <a href="#gallery" class="hover:text-cafe-amber transition-colors">Gallery</a>
+                <a href="#about" class="hover:text-cafe-amber transition-colors">Story</a>
+                <a href="#contact" class="hover:text-cafe-amber transition-colors">Visit Us</a>
+            </div>
+
+            <!-- Actions: Status Badge, Dark Switch, Cart Button -->
+            <div class="flex items-center gap-2 md:gap-3">
+                <!-- Dynamic Open/Closed Pill -->
+                <div id="statusBadge" class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shadow-md hover:shadow-glow  ">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span id="statusText">Open Today</span>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <button id="themeToggleBtn" onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-cafe-cardLight dark:bg-cafe-borderDark text-cafe-textLight dark:text-cafe-textDark flex items-center justify-center hover:text-cafe-amber transition-colors" title="Toggle Theme">
+                    <i class="fa-solid fa-moon text-sm dark:hidden"></i>
+                    <i class="fa-solid fa-sun text-sm hidden dark:block text-amber-400"></i>
+                </button>
+
+                <!-- Floating Cart Trigger Button -->
+                <button onclick="toggleCartDrawer()" class="relative flex items-center gap-2 bg-cafe-textLight dark:bg-cafe-textDark text-white dark:text-cafe-bgDark px-3.5 py-1.5 md:px-4 md:py-2 rounded-full font-heading font-bold text-xs md:text-sm shadow-md hover:bg-cafe-amber dark:hover:bg-cafe-amber dark:hover:text-white transition-all shadow-md hover:shadow-glow  active:scale-95">
+                    <i class="fa-solid fa-bag-shopping text-sm"></i>
+                    <span class="hidden xs:inline">Bag</span>
+                    <span id="cartBadgeCount" class="w-5 h-5 bg-cafe-amber text-white text-[11px] font-bold rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="pt-24 md:pt-28 pb-16">
+
+        <!-- HERO SECTION WITH BENTO GRID -->
+        <section class="max-w-6xl mx-auto px-4 md:px-6 my-4 md:my-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-6">
+                
+                <!-- Bento Box 1: Main Headline & Intro (Lg 8 cols) -->
+                <div class="lg:col-span-8 bg-cafe-cardLight dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-soft-float dark:shadow-dark-float relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-cafe-amber/10 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <!-- Badge Header -->
+                    <div class="flex flex-wrap items-center gap-2 mb-6">
+                        <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-cafe-amber/15 text-cafe-amber border border-cafe-amber/30">
+                             Jaffna's Aesthetic Specialty Spot
+                        </span>
+                        <div class="flex items-center gap-1 bg-white/80 dark:bg-black/40 px-3 py-1 rounded-full border border-cafe-borderLight dark:border-cafe-borderDark text-xs font-semibold">
+                            <i class="fa-solid fa-star text-amber-500 text-xs"></i>
+                            <span>4.6 Rated on Google • 100+ Reviews</span>
+                        </div>
+                    </div>
+
+                    <!-- Headline with Ganos Semi Bold Style (Outfit 700/800) -->
+                    <div class="mb-8 relative z-10">
+                        <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-cafe-textLight dark:text-cafe-textDark leading-[1.08] tracking-tight">
+                            Crafting artisanal <span class="text-cafe-amber underline decoration-cafe-amber/30 underline-offset-8">sips & moments</span> in Jaffna.
+                        </h1>
+                        <p class="mt-4 text-cafe-mutedLight dark:text-cafe-mutedDark text-sm sm:text-base md:text-lg max-w-xl font-normal leading-relaxed">
+                            Welcome to Mr. Cafe. Experience handcrafted espresso, refreshing cold matcha, gourmet toasties, and rich desserts in a cozy space designed for your soul.
+                        </p>
+                    </div>
+
+                    <!-- CTAs & Search Trigger -->
+                    <div class="flex flex-wrap items-center gap-3 relative z-10">
+                        <a href="#menu" class="bg-cafe-amber hover:bg-cafe-amberHover text-white font-heading font-bold px-6 py-3.5 rounded-full text-sm sm:text-base flex items-center gap-2 transition-all shadow-md hover:shadow-glow active:scale-95">
+                            <span>Explore Menu</span>
+                            <i class="fa-solid fa-arrow-down-long text-xs"></i>
+                        </a>
+                        <a href="https://wa.me/94763603403" target="_blank" rel="noopener" class="bg-white dark:bg-cafe-bgDark hover:bg-emerald-400 hover:text-white dark:hover:bg-emerald-400 border border-cafe-borderLight dark:border-cafe-borderDark font-heading font-semibold px-5 py-3.5 rounded-full text-sm flex items-center gap-2 transition-all shadow-md hover:shadow-glow  active:scale-95">
+                            <i class="fa-brands fa-whatsapp text-emerald-00 text-lg"></i>
+                            <span>Direct Order</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bento Box 2: Cafe Feature Highlight Card (Lg 4 cols) -->
+                <div class="lg:col-span-4 bg-gradient-to-br from-cafe-amber to-amber-700 text-white rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-soft-float relative overflow-hidden ">
+
+                    <div class="flex justify-between items-start">
+                        <span class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-lg">
+                            
+                        </span>
+                        <span class="text-xs font-bold uppercase tracking-wider bg-black/20 px-3 py-1 rounded-full  ">
+                            Q427+JHG Jaffna
+                        </span>
+                    </div>
+
+                    <div class="my-6">
+                        <h2 class="font-heading font-bold text-2xl md:text-3xl leading-snug">
+                            Freshly Roasted Daily.
+                        </h2>
+                        <p class="text-white/80 text-xs sm:text-sm mt-2 leading-relaxed">
+                            Serving signature citrus cold brews, specialty tea lattes, and crispy savory bites in the heart of Jaffna town.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/20 flex items-center justify-between text-xs font-semibold">
+                        <span class="flex items-center gap-1.5">
+                            <i class="fa-regular fa-clock"></i> 8:00 AM – 10:00 PM
+                        </span>
+                        <span class="bg-white text-cafe-textLight px-2.5 py-1 rounded-full text-[11px] font-bold">
+                            Takeaway & Dine-In
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- AUTOMATICALLY MOVING PHOTO GALLERY (CONTINUOUS MARQUEE) -->
+        <section class="py-6 md:py-10 bg-cafe-cardLight/50 dark:bg-cafe-cardDark/40 border-y border-cafe-borderLight/60 dark:border-cafe-borderDark/60 my-6 overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 mb-4 flex items-center justify-between">
+                <div>
+                    <h2 class="font-heading font-bold text-lg md:text-xl text-cafe-textLight dark:text-cafe-textDark">
+                         Cafe Showcase Spotlight
+                    </h2>
+                    <p class="text-xs text-cafe-mutedLight dark:text-cafe-mutedDark">Hover or tap cards to pause scrolling</p>
+                </div>
+                <span class="text-xs font-semibold text-cafe-amber bg-cafe-amber/10 px-3 py-1 rounded-full">
+                    Auto Gallery Continuous
+                </span>
+            </div>
+
+            <!-- Marquee Horizontal Scroll Window -->
+            <div class="marquee-container w-full overflow-hidden relative cursor-grab active:cursor-grabbing">
+                <!-- Fade Gradients on edges for aesthetic look -->
+                <div class="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-cafe-bgLight dark:from-cafe-bgDark to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-cafe-bgLight dark:from-cafe-bgDark to-transparent z-10 pointer-events-none"></div>
+
+                <div class="animate-marquee gap-4 md:gap-6 px-4">
+                    
+                    <!-- Gallery Item 1 -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80', 'Citrus Espresso Cold Brew')" class="w-64 sm:w-72 md:w-80 flex-shrink-0 bg-white dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+                        <div class="h-44 sm:h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80" alt="Citrus Espresso" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                            <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">Citrus Black</span>
+                        </div>
+                        <div class="p-3.5 flex justify-between items-center">
+                            <span class="font-heading font-semibold text-sm">Citrus Espresso Tonic</span>
+                            <span class="text-xs font-bold text-cafe-amber">Rs. 850</span>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 2 -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=800&q=80', 'Artisanal Berry Matcha')" class="w-64 sm:w-72 md:w-80 flex-shrink-0 bg-white dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+                        <div class="h-44 sm:h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=800&q=80" alt="Berry Matcha" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                            <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">Berry Matcha</span>
+                        </div>
+                        <div class="p-3.5 flex justify-between items-center">
+                            <span class="font-heading font-semibold text-sm">Ceremonial Iced Matcha</span>
+                            <span class="text-xs font-bold text-cafe-amber">Rs. 1,100</span>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 3 -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80', 'Mr. Cafe Cozy Interior')" class="w-64 sm:w-72 md:w-80 flex-shrink-0 bg-white dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+                        <div class="h-44 sm:h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Cafe Vibes" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                            <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">Cozy Vibe</span>
+                        </div>
+                        <div class="p-3.5 flex justify-between items-center">
+                            <span class="font-heading font-semibold text-sm">Artisanal Barista Bar</span>
+                            <span class="text-xs font-semibold text-emerald-500">Air Conditioned</span>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 4 -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80', 'Iced Caramel Spanish Latte')" class="w-64 sm:w-72 md:w-80 flex-shrink-0 bg-white dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+                        <div class="h-44 sm:h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Iced Caramel Latte" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                            <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">Spanish Latte</span>
+                        </div>
+                        <div class="p-3.5 flex justify-between items-center">
+                            <span class="font-heading font-semibold text-sm">Rich Spanish Coffee</span>
+                            <span class="text-xs font-bold text-cafe-amber">Rs. 1,050</span>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 5 -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80', 'Gourmet Cheese Toastie')" class="w-64 sm:w-72 md:w-80 flex-shrink-0 bg-white dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+                        <div class="h-44 sm:h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80" alt="Gourmet Toastie" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                            <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">Cheese Toastie</span>
+                        </div>
+                        <div class="p-3.5 flex justify-between items-center">
+                            <span class="font-heading font-semibold text-sm">Jaffna Spiced Pepper Melt</span>
+                            <span class="text-xs font-bold text-cafe-amber">Rs. 890</span>
+                        </div>
+                    </div>
+
+                    <!-- DUPLICATE COPIES FOR INFINITE LOOP EFFECT -->
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80', 'Citrus Espresso Cold Brew')" class="w-64 sm:w-72 md:w-80 flex-shrink-0 bg-white dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+                        <div class="h-44 sm:h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80" alt="Citrus Espresso" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                            <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">Citrus Black</span>
+                        </div>
+                        <div class="p-3.5 flex justify-between items-center">
+                            <span class="font-heading font-semibold text-sm">Citrus Espresso Tonic</span>
+                            <span class="text-xs font-bold text-cafe-amber">Rs. 850</span>
+                        </div>
+                    </div>
+
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=800&q=80', 'Artisanal Berry Matcha')" class="w-64 sm:w-72 md:w-80 flex-shrink-0 bg-white dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+                        <div class="h-44 sm:h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=800&q=80" alt="Berry Matcha" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                            <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">Berry Matcha</span>
+                        </div>
+                        <div class="p-3.5 flex justify-between items-center">
+                            <span class="font-heading font-semibold text-sm">Ceremonial Iced Matcha</span>
+                            <span class="text-xs font-bold text-cafe-amber">Rs. 1,100</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- MENU SECTION WITH AESTHETIC SEARCH & CATEGORY FILTERS -->
+        <section id="menu" class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
+            
+            <!-- Section Header & Dynamic Search Bar -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+                <div>
+                    <span class="text-xs font-bold text-cafe-amber uppercase tracking-widest">Handcrafted Delights</span>
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-cafe-textLight dark:text-cafe-textDark mt-1">
+                        Our Cafe Menu
+                    </h2>
+                </div>
+
+                <!-- AESTHETIC GLASSMORPHIC SEARCH BAR -->
+                <div class="relative w-full md:w-80">
+                    <div class="relative flex items-center">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 text-cafe-mutedLight dark:text-cafe-mutedDark text-sm"></i>
+                        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search coffees, matcha, snacks..." class="w-full pl-11 pr-10 py-3 rounded-full bg-cafe-cardLight dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark focus:border-cafe-amber focus:ring-2 focus:ring-cafe-amber/20 outline-none text-sm font-medium transition-all shadow-sm">
+                        <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3.5 text-cafe-mutedLight hover:text-cafe-textLight dark:hover:text-white transition-colors">
+                            <i class="fa-solid fa-circle-xmark text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORY FILTER PILLS -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-none mb-8">
+                <button onclick="filterCategory('All')" class="category-btn active border px-4 py-2 rounded-full text-xs sm:text-sm font-heading font-bold whitespace-nowrap transition-all bg-cafe-amber text-white border-cafe-amber">
+                    All Items
+                </button>
+                <button onclick="filterCategory('Coffee & Brews')" class="category-btn border px-4 py-2 rounded-full text-xs sm:text-sm font-heading font-semibold whitespace-nowrap transition-all bg-cafe-cardLight dark:bg-cafe-cardDark text-cafe-textLight dark:text-cafe-textDark border-cafe-borderLight dark:border-cafe-borderDark hover:border-cafe-amber">
+                     Coffee & Brews
+                </button>
+                <button onclick="filterCategory('Cold Drinks')" class="category-btn border px-4 py-2 rounded-full text-xs sm:text-sm font-heading font-semibold whitespace-nowrap transition-all bg-cafe-cardLight dark:bg-cafe-cardDark text-cafe-textLight dark:text-cafe-textDark border-cafe-borderLight dark:border-cafe-borderDark hover:border-cafe-amber">
+                     Cold Drinks
+                </button>
+                <button onclick="filterCategory('Bites & Snacks')" class="category-btn border px-4 py-2 rounded-full text-xs sm:text-sm font-heading font-semibold whitespace-nowrap transition-all bg-cafe-cardLight dark:bg-cafe-cardDark text-cafe-textLight dark:text-cafe-textDark border-cafe-borderLight dark:border-cafe-borderDark hover:border-cafe-amber">
+                     Bites & Snacks
+                </button>
+            </div>
+
+            <!-- PRODUCT MENU GRID -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+                <!-- Dynamically populated via JS -->
+            </div>
+
+            <!-- EMPTY SEARCH RESULT STATE -->
+            <div id="emptySearchState" class="hidden text-center py-16 px-4 bg-cafe-cardLight/50 dark:bg-cafe-cardDark/30 border border-dashed border-cafe-borderLight dark:border-cafe-borderDark rounded-3xl">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-cafe-amber/10 flex items-center justify-center text-cafe-amber text-2xl">
+                    
+                </div>
+                <h3 class="font-heading font-bold text-xl mb-1">Nothing found for your craving</h3>
+                <p class="text-sm text-cafe-mutedLight dark:text-cafe-mutedDark max-w-sm mx-auto mb-4">
+                    Try searching for another brew or select one of our popular categories above.
+                </p>
+                <button onclick="clearSearch()" class="text-xs font-bold bg-cafe-amber text-white px-4 py-2 rounded-full hover:bg-cafe-amberHover transition-colors">
+                    Reset Search
+                </button>
+            </div>
+
+        </section>
+
+        <!-- PHOTO GALLERY & INSTAGRAM LIGHTBOX GRID -->
+        <section id="gallery" class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
+            <div class="text-center max-w-xl mx-auto mb-10">
+                <span class="text-xs font-bold text-cafe-amber uppercase tracking-widest">Visual Atmosphere</span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl mt-1">
+                    Life at Mr. Cafe
+                </h2>
+                <p class="text-sm text-cafe-mutedLight dark:text-cafe-mutedDark mt-2">
+                    A glimpse of our aesthetic coffee presentations, cozy corners, and community moments.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80', 'Espresso Bar Vibes')" class="cursor-pointer group relative rounded-2xl overflow-hidden aspect-square bg-cafe-cardLight dark:bg-cafe-cardDark">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80" alt="Espresso Bar" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-heading text-sm font-semibold p-2 text-center">
+                        <i class="fa-solid fa-expand mr-2"></i> Espresso Pour
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80', 'Fresh Croissants & Treats')" class="cursor-pointer group relative rounded-2xl overflow-hidden aspect-square bg-cafe-cardLight dark:bg-cafe-cardDark">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Desserts" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-heading text-sm font-semibold p-2 text-center">
+                        <i class="fa-solid fa-expand mr-2"></i> Daily Pastries
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1000&q=80', 'Signature Pour Over')" class="cursor-pointer group relative rounded-2xl overflow-hidden aspect-square bg-cafe-cardLight dark:bg-cafe-cardDark">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Pour Over" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-heading text-sm font-semibold p-2 text-center">
+                        <i class="fa-solid fa-expand mr-2"></i> Pour Over Coffee
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1000&q=80', 'Chill Workspace')" class="cursor-pointer group relative rounded-2xl overflow-hidden aspect-square bg-cafe-cardLight dark:bg-cafe-cardDark">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=600&q=80" alt="Chill Seating" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-heading text-sm font-semibold p-2 text-center">
+                        <i class="fa-solid fa-expand mr-2"></i> Cafe Seating
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT & LOCATION SECTION WITH INTERACTIVE MAP -->
+        <section id="about" class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
+            <div class="bg-cafe-cardLight dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-3xl p-6 sm:p-10 shadow-soft-float dark:shadow-dark-float grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-6 space-y-4">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-cafe-amber/15 text-cafe-amber">
+                         Located in Jaffna
+                    </span>
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-cafe-textLight dark:text-cafe-textDark">
+                        Your Everyday Sanctuary for Quality Brews.
+                    </h2>
+                    <p class="text-cafe-mutedLight dark:text-cafe-mutedDark text-sm sm:text-base leading-relaxed">
+                        Situated at <strong class="text-cafe-textLight dark:text-cafe-textDark">Q427+JHG, Jaffna</strong>, Mr. Cafe is built on a simple promise: exceptional ingredients, warm northern Sri Lankan hospitality, and a refined modern space to work, converse, or relax.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-cafe-borderLight dark:border-cafe-borderDark">
+                        <div>
+                            <span class="text-xs text-cafe-mutedLight dark:text-cafe-mutedDark">Phone & WhatsApp</span>
+                           </a>
+                        <a href="https://wa.me/94763603403" target="_blank" rel="noopener" class="bg-white dark:bg-cafe-bgDark hover:bg-emerald-300 hover:text-white dark:hover:bg-emerald-400 border border-cafe-borderLight dark:border-cafe-borderDark font-heading font-semibold px-5 py-3.5 rounded-full text-sm flex items-center gap-2 transition-all active:scale-95">
+                            <i class="fa-brands fa-whatsapp text-emerald-500 text-lg"></i>
+                            <span>Call Now</span>
+                        </a>
+                        </div>
+                        <div>
+                            <span class="text-xs text-cafe-mutedLight dark:text-cafe-mutedDark">Opening Hours</span>
+                            <p class="font-heading font-bold text-sm mt-0.5">
+                                8:00 AM – 10:00 PM Daily
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 pt-2">
+                        <button onclick="openReviewModal()" class="bg-cafe-textLight dark:bg-cafe-textDark text-white dark:text-cafe-bgDark px-5 py-2.5 rounded-full font-heading font-semibold text-xs sm:text-sm hover:bg-cafe-amber dark:hover:bg-cafe-amber dark:hover:text-white transition-all">
+                            <i class="fa-solid fa-star text-amber-400 mr-1.5"></i> Leave a Review
+                        </button>
+                        <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener" class="border border-cafe-borderLight dark:border-cafe-borderDark px-5 py-2.5 rounded-full font-heading font-semibold text-xs sm:text-sm hover:border-cafe-amber transition-all">
+                            <i class="fa-solid fa-location-dot mr-1.5 text-cafe-amber"></i> Directions
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed Placeholder Container -->
+                <div class="lg:col-span-6 h-72 sm:h-80 rounded-2xl overflow-hidden border border-cafe-borderLight dark:border-cafe-borderDark relative shadow-inner bg-cafe-bgLight dark:bg-cafe-bgDark">
+                    <iframe title="Mr. Cafe Jaffna Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15730.0!2d80.0!3d9.66!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fe9350000000001%3A0x0!2zOcKwMzknMzYuMCJOIDgwwrAwMCcwMC4wIkU!5e0!3m2!1sen!2slk!4v1680000000000!5m2!1sen!2slk" class="w-full h-full border-0 grayscale dark:invert dark:contrast-125 opacity-90" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer id="contact" class="bg-cafe-cardLight dark:bg-cafe-cardDark border-t border-cafe-borderLight dark:border-cafe-borderDark py-10 md:py-14">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-cafe-borderLight dark:border-cafe-borderDark">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-cafe-amber text-white flex items-center justify-center font-heading font-bold text-xl">
+                        <img src="c:\Users\User\Downloads\487789937_652491484196129_921228232833676197_n.jpg" alt="Mr. Cafe">
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-extrabold text-xl tracking-tight">Mr.Cafe</h3>
+                        <p class="text-xs text-cafe-mutedLight dark:text-cafe-mutedDark">Artisanal Coffee & Culinary Moments</p>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex items-center gap-4">
+                    <a href="https://www.instagram.com/mrcafe.lk/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white dark:bg-cafe-bgDark border border-cafe-borderLight dark:border-cafe-borderDark flex items-center justify-center text-cafe-textLight dark:text-cafe-textDark hover:text-cafe-amber transition-colors shadow-sm" title="Instagram">
+                        <i class="fa-brands fa-instagram text-lg"></i>
+                    </a>
+                    <a href="https://web.facebook.com/61573972213507/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white dark:bg-cafe-bgDark border border-cafe-borderLight dark:border-cafe-borderDark flex items-center justify-center text-cafe-textLight dark:text-cafe-textDark hover:text-cafe-amber transition-colors shadow-sm" title="Facebook">
+                        <i class="fa-brands fa-facebook-f text-base"></i>
+                    </a>
+                    <a href="https://wa.me/94763603403" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center hover:bg-emerald-600 transition-colors shadow-sm" title="WhatsApp">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-cafe-mutedLight dark:text-cafe-mutedDark gap-4">
+                <p>© <span id="currentYear"></span> Mr.Cafe Jaffna. All rights reserved.</p>
+                <p class="flex items-center gap-1">
+                    <span>Designed with in Sri Lanka</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SLIDE-OUT CART DRAWER INTERFACE -->
+    <div id="cartDrawerOverlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-cafe-bgLight dark:bg-cafe-bgDark shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-l border-cafe-borderLight dark:border-cafe-borderDark">
+        
+        <!-- Drawer Header -->
+        <div class="p-5 border-b border-cafe-borderLight dark:border-cafe-borderDark flex items-center justify-between bg-cafe-cardLight dark:bg-cafe-cardDark">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping text-cafe-amber text-lg"></i>
+                <h3 class="font-heading font-extrabold text-lg">Your Order Bag</h3>
+            </div>
+            <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full bg-white dark:bg-cafe-bgDark flex items-center justify-center text-cafe-mutedLight hover:text-cafe-textLight dark:hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items List Container -->
+        <div id="cartItemsList" class="flex-1 overflow-y-auto p-5 space-y-4">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Empty Cart Placeholder -->
+        <div id="emptyCartPlaceholder" class="flex-1 flex flex-col items-center justify-center p-6 text-center">
+            <div class="w-20 h-20 rounded-full bg-cafe-amber/10 flex items-center justify-center text-3xl text-cafe-amber mb-3">
+            </div>
+            <h4 class="font-heading font-bold text-lg mb-1">Your bag is empty</h4>
+            <p class="text-xs text-cafe-mutedLight dark:text-cafe-mutedDark max-w-xs mb-4">
+                Looks like you haven't added any coffee or bites to your order yet.
+            </p>
+            <button onclick="toggleCartDrawer()" class="bg-cafe-amber text-white font-heading font-bold text-xs px-5 py-2.5 rounded-full hover:bg-cafe-amberHover transition-colors">
+                Browse Menu
+            </button>
+        </div>
+
+        <!-- Cart Footer & WhatsApp Checkout CTA -->
+        <div id="cartFooter" class="p-5 border-t border-cafe-borderLight dark:border-cafe-borderDark bg-cafe-cardLight dark:bg-cafe-cardDark hidden space-y-3">
+            <div class="flex justify-between items-center text-sm font-semibold">
+                <span class="text-cafe-mutedLight dark:text-cafe-mutedDark">Subtotal</span>
+                <span id="cartSubtotalText" class="font-heading font-bold text-base">Rs. 0</span>
+            </div>
+
+            <p class="text-[11px] text-cafe-mutedLight dark:text-cafe-mutedDark">
+                Order will be auto-formatted and sent via WhatsApp directly to our barista bar.
+            </p>
+
+            <button onclick="checkoutToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-600/25 transition-all active:scale-95 text-sm">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Order via WhatsApp Now</span>
+            </button>
+        </div>
+
+    </aside>
+
+    <!-- PRODUCT CUSTOMIZATION MODAL -->
+    <div id="productModalOverlay" onclick="closeProductModal(event)" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-cafe-bgLight dark:bg-cafe-bgDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-3xl max-w-md w-full overflow-hidden shadow-2xl transition-all transform scale-95 opacity-0 duration-200" id="productModalCard">
+            
+            <div class="relative h-56 bg-cafe-cardLight dark:bg-cafe-cardDark overflow-hidden">
+                <img id="modalImg" src="" alt="Product" class="w-full h-full object-cover">
+                <button onclick="closeProductModalForce()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-5 md:p-6 space-y-4">
+                <div>
+                    <div class="flex justify-between items-start">
+                        <h3 id="modalTitle" class="font-heading font-extrabold text-xl">Product Title</h3>
+                        <span id="modalPrice" class="font-heading font-bold text-cafe-amber text-lg">Rs. 0</span>
+                    </div>
+                    <p id="modalDesc" class="text-xs text-cafe-mutedLight dark:text-cafe-mutedDark mt-1 leading-relaxed">
+                        Description goes here...
+                    </p>
+                </div>
+
+                <!-- Customization Options -->
+                <div class="space-y-3 pt-2 border-t border-cafe-borderLight dark:border-cafe-borderDark">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-cafe-mutedLight dark:text-cafe-mutedDark">
+                        Special Preferences
+                    </label>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <label class="flex items-center gap-2 p-2 rounded-xl bg-cafe-cardLight dark:bg-cafe-cardDark cursor-pointer border border-transparent hover:border-cafe-amber">
+                            <input type="checkbox" id="optLessSugar" class="accent-cafe-amber">
+                            <span>Less Sugar / Ice</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2 rounded-xl bg-cafe-cardLight dark:bg-cafe-cardDark cursor-pointer border border-transparent hover:border-cafe-amber">
+                            <input type="checkbox" id="optExtraShot" class="accent-cafe-amber">
+                            <span>Extra Espresso (+Rs 150)</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="text" id="modalNotes" placeholder="Any special instructions for barista..." class="w-full p-2.5 rounded-xl bg-cafe-cardLight dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark text-xs outline-none focus:border-cafe-amber">
+                    </div>
+                </div>
+
+                <!-- Quantity & Add Button -->
+                <div class="flex items-center gap-4 pt-3">
+                    <div class="flex items-center border border-cafe-borderLight dark:border-cafe-borderDark rounded-xl overflow-hidden bg-cafe-cardLight dark:bg-cafe-cardDark">
+                        <button onclick="adjustModalQty(-1)" class="w-9 h-9 flex items-center justify-center font-bold hover:bg-cafe-amber hover:text-white transition-colors">-</button>
+                        <span id="modalQtyVal" class="w-9 text-center font-heading font-bold text-sm">1</span>
+                        <button onclick="adjustModalQty(1)" class="w-9 h-9 flex items-center justify-center font-bold hover:bg-cafe-amber hover:text-white transition-colors">+</button>
+                    </div>
+
+                    <button onclick="confirmAddToCart()" class="flex-1 bg-cafe-amber hover:bg-cafe-amberHover text-white font-heading font-bold py-2.5 px-4 rounded-xl text-sm transition-all shadow-md active:scale-95 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Add to Order Bag</span>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- LIGHTBOX MODAL FOR PHOTO GALLERY -->
+    <div id="lightboxOverlay" onclick="closeLightbox()" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-2xl hover:text-cafe-amber transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-3xl w-full text-center space-y-3" onclick="event.stopPropagation()">
+            <img id="lightboxImg" src="" alt="Gallery Preview" class="max-h-[80vh] mx-auto rounded-2xl shadow-2xl object-contain">
+            <p id="lightboxCaption" class="text-white font-heading font-semibold text-base"></p>
+        </div>
+    </div>
+
+    <!-- REVIEW MODAL -->
+    <div id="reviewModalOverlay" onclick="closeReviewModal(event)" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div id="reviewModalCard" class="bg-cafe-bgLight dark:bg-cafe-bgDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="font-heading font-extrabold text-xl">Rate Your Experience</h3>
+                <button onclick="closeReviewModalForce()" class="text-cafe-mutedLight hover:text-cafe-textLight">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <p class="text-xs text-cafe-mutedLight dark:text-cafe-mutedDark">
+                Your feedback helps us continuously elevate our drinks and service in Jaffna!
+            </p>
+
+            <div class="flex justify-center gap-2 text-2xl text-amber-400 py-2">
+                <i class="fa-solid fa-star hover:scale-125 cursor-pointer transition-transform"></i>
+                <i class="fa-solid fa-star hover:scale-125 cursor-pointer transition-transform"></i>
+                <i class="fa-solid fa-star hover:scale-125 cursor-pointer transition-transform"></i>
+                <i class="fa-solid fa-star hover:scale-125 cursor-pointer transition-transform"></i>
+                <i class="fa-solid fa-star hover:scale-125 cursor-pointer transition-transform"></i>
+            </div>
+
+            <textarea id="reviewText" rows="3" placeholder="Tell us what you loved about Mr. Cafe..." class="w-full p-3 rounded-2xl bg-cafe-cardLight dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark text-xs outline-none focus:border-cafe-amber"></textarea>
+
+            <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener" class="block w-full text-center bg-cafe-amber hover:bg-cafe-amberHover text-white font-heading font-bold py-3 rounded-xl text-xs transition-all shadow-md">
+                Post Review on Google Maps <i class="fa-solid fa-external-link text-[10px] ml-1"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- FLOATING WHATSAPP BUTTON WITH GLOW & BACK TO TOP -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
+        <!-- Back To Top Button -->
+        <button id="backToTopBtn" onclick="scrollToTop()" class="w-10 h-10 rounded-full bg-cafe-cardLight dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark text-cafe-textLight dark:text-cafe-textDark flex items-center justify-center shadow-lg opacity-0 pointer-events-none transition-all hover:bg-cafe-amber hover:text-white">
+            <i class="fa-solid fa-arrow-up text-xs"></i>
+        </button>
+
+        <!-- Floating WhatsApp Pulsing Launcher -->
+        <a href="https://wa.me/94763603403" target="_blank" rel="noopener" class="w-13 h-13 sm:w-14 sm:h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center text-2xl shadow-xl animate-pulse-glow hover:scale-110 transition-transform relative group" title="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="absolute right-full mr-3 bg-black/80 text-white text-xs font-semibold px-3 py-1.5 rounded-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-md">
+                Chat with Barista 
+            </span>
+        </a>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // MENU DATA COLLECTION
+        const menuProducts = [
+            {
+                id: 'p1',
+                name: 'Citrus Black Tonic',
+                category: 'Coffee & Brews',
+                price: 850,
+                tag: 'Bestseller',
+                desc: 'Signature double espresso poured over chilled Jaffna citrus infused tonic & fresh lime ice.',
+                img: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'p2',
+                name: 'Cinnamon Ceylon Brew',
+                category: 'Coffee & Brews',
+                price: 920,
+                tag: 'Signature',
+                desc: 'Rich dark roast espresso infused with authentic Ceylon cinnamon stick and light foam.',
+                img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'p3',
+                name: 'Ceremonial Berry Matcha',
+                category: 'Cold Drinks',
+                price: 1100,
+                tag: 'Popular',
+                desc: 'First-harvest Japanese Uji matcha layered over pure strawberry reduction and cold milk.',
+                img: 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'p4',
+                name: 'Iced Spanish Latte',
+                category: 'Coffee & Brews',
+                price: 1050,
+                tag: 'Must Try',
+                desc: 'Silky smooth condensed milk elixir blended with bold double shot espresso over ice.',
+                img: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'p5',
+                name: 'Jaffna Spiced Cheese Toastie',
+                category: 'Bites & Snacks',
+                price: 890,
+                tag: 'Hot Snack',
+                desc: 'Toasted sourdough stuffed with melted sharp cheddar, roasted peppers, and green chili spice.',
+                img: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'p6',
+                name: 'Triple Chocolate Layer Slice',
+                category: 'Bites & Snacks',
+                price: 750,
+                tag: 'Sweet',
+                desc: 'Decadent multi-layered Belgian chocolate mousse cake with cocoa nib crunch.',
+                img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'p7',
+                name: 'Tropical Passion Sparkling Fizz',
+                category: 'Cold Drinks',
+                price: 680,
+                tag: 'Refreshing',
+                desc: 'Fresh local passionfruit pulp, crushed mint leaves, and effervescent soda over ice.',
+                img: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'p8',
+                name: 'Iced Caramel Cloud Macchiato',
+                category: 'Coffee & Brews',
+                price: 980,
+                tag: 'Classic',
+                desc: 'Fluffy vanilla cloud foam, chilled espresso, and dark caramel drizzle drizzle.',
+                img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80'
+            }
+        ];
+
+        // STATE MANAGEMENT
+        let activeCategory = 'All';
+        let searchQuery = '';
+        let cartItems = [];
+        let activeSelectedProduct = null;
+        let activeModalQty = 1;
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            checkCafeOpenStatus();
+            renderMenuGrid();
+            updateCurrentYear();
+            setupScrollListeners();
+        });
+
+        // LIGHT / DARK THEME TOGGLE WITH LOCALSTORAGE MEMORY
+        function initTheme() {
+            const savedTheme = localStorage.getItem('mr_cafe_theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            }
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                localStorage.setItem('mr_cafe_theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                localStorage.setItem('mr_cafe_theme', 'dark');
+            }
+        }
+
+        // DYNAMIC OPEN / CLOSED CALCULATOR
+        function checkCafeOpenStatus() {
+            const statusText = document.getElementById('statusText');
+            const statusBadge = document.getElementById('statusBadge');
+            const now = new Date();
+            const currentHour = now.getHours();
+
+            // Cafe Hours: 8:00 AM (8) to 10:00 PM (22)
+            if (currentHour >= 8 && currentHour < 22) {
+                statusText.innerText = 'Open Today • 8 AM — 10 PM';
+                statusBadge.className = 'hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400';
+            } else {
+                statusText.innerText = 'Closed • Opens at 8 AM';
+                statusBadge.className = 'hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400';
+            }
+        }
+
+        // RENDER MENU GRID WITH SEARCH & CATEGORY FILTERING
+        function renderMenuGrid() {
+            const gridContainer = document.getElementById('productGrid');
+            const emptyState = document.getElementById('emptySearchState');
+
+            const filtered = menuProducts.filter(item => {
+                const matchesCategory = activeCategory === 'All' || item.category === activeCategory;
+                const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                      item.desc.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                gridContainer.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            gridContainer.innerHTML = filtered.map(item => `
+                <div class="card-container bg-cafe-cardLight dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-3xl p-4 shadow-soft-float dark:shadow-dark-float flex flex-col justify-between hover:border-cafe-amber/50 transition-all group">
+                    <div>
+                        <!-- Product Image & Tag -->
+                        <div class="h-48 rounded-2xl overflow-hidden relative mb-4 bg-white/50">
+                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover card-img-zoom" loading="lazy">
+                            <span class="absolute top-3 left-3 bg-cafe-textLight/80 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                                ${item.tag}
+                            </span>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="flex justify-between items-start gap-2 mb-1.5">
+                            <h3 class="font-heading font-extrabold text-lg group-hover:text-cafe-amber transition-colors">
+                                ${item.name}
+                            </h3>
+                            <span class="font-heading font-bold text-cafe-amber text-sm whitespace-nowrap bg-cafe-amber/10 px-2.5 py-0.5 rounded-full">
+                                Rs. ${item.price}
+                            </span>
+                        </div>
+                        <p class="text-xs text-cafe-mutedLight dark:text-cafe-mutedDark line-clamp-2 leading-relaxed mb-4">
+                            ${item.desc}
+                        </p>
+                    </div>
+
+                    <!-- Add Button -->
+                    <button onclick="openProductModal('${item.id}')" class="w-full bg-white dark:bg-cafe-bgDark hover:bg-cafe-amber hover:text-white dark:hover:bg-cafe-amber border border-cafe-borderLight dark:border-cafe-borderDark font-heading font-bold text-xs py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-plus text-[10px]"></i>
+                        <span>Customize & Add</span>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // SEARCH & CATEGORY HANDLERS
+        function handleSearch() {
+            const input = document.getElementById('searchInput');
+            searchQuery = input.value.trim();
+            document.getElementById('clearSearchBtn').classList.toggle('hidden', searchQuery === '');
+            renderMenuGrid();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            searchQuery = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            renderMenuGrid();
+        }
+
+        function filterCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.innerText.includes(cat) || (cat === 'All' && btn.innerText.includes('All'))) {
+                    btn.className = 'category-btn active border px-4 py-2 rounded-full text-xs sm:text-sm font-heading font-bold whitespace-nowrap transition-all bg-cafe-amber text-white border-cafe-amber';
+                } else {
+                    btn.className = 'category-btn border px-4 py-2 rounded-full text-xs sm:text-sm font-heading font-semibold whitespace-nowrap transition-all bg-cafe-cardLight dark:bg-cafe-cardDark text-cafe-textLight dark:text-cafe-textDark border-cafe-borderLight dark:border-cafe-borderDark hover:border-cafe-amber';
+                }
+            });
+            renderMenuGrid();
+        }
+
+        // PRODUCT MODAL HANDLERS
+        function openProductModal(productId) {
+            activeSelectedProduct = menuProducts.find(p => p.id === productId);
+            if (!activeSelectedProduct) return;
+
+            activeModalQty = 1;
+            document.getElementById('modalQtyVal').innerText = '1';
+            document.getElementById('modalTitle').innerText = activeSelectedProduct.name;
+            document.getElementById('modalPrice').innerText = `Rs. ${activeSelectedProduct.price}`;
+            document.getElementById('modalDesc').innerText = activeSelectedProduct.desc;
+            document.getElementById('modalImg').src = activeSelectedProduct.img;
+            document.getElementById('optLessSugar').checked = false;
+            document.getElementById('optExtraShot').checked = false;
+            document.getElementById('modalNotes').value = '';
+
+            const overlay = document.getElementById('productModalOverlay');
+            const card = document.getElementById('productModalCard');
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                card.classList.remove('scale-95', 'opacity-0');
+                card.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeProductModal(e) {
+            if (e.target.id === 'productModalOverlay') {
+                closeProductModalForce();
+            }
+        }
+
+        function closeProductModalForce() {
+            const overlay = document.getElementById('productModalOverlay');
+            const card = document.getElementById('productModalCard');
+            card.classList.remove('scale-100', 'opacity-100');
+            card.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 200);
+        }
+
+        function adjustModalQty(delta) {
+            activeModalQty = Math.max(1, activeModalQty + delta);
+            document.getElementById('modalQtyVal').innerText = activeModalQty;
+        }
+
+        function confirmAddToCart() {
+            if (!activeSelectedProduct) return;
+
+            const extraShot = document.getElementById('optExtraShot').checked;
+            const lessSugar = document.getElementById('optLessSugar').checked;
+            const notes = document.getElementById('modalNotes').value.trim();
+
+            let itemPrice = activeSelectedProduct.price;
+            let optionsText = [];
+
+            if (extraShot) {
+                itemPrice += 150;
+                optionsText.push('Extra Shot (+Rs 150)');
+            }
+            if (lessSugar) {
+                optionsText.push('Less Sugar/Ice');
+            }
+
+            const cartEntry = {
+                id: Date.now().toString(),
+                productId: activeSelectedProduct.id,
+                name: activeSelectedProduct.name,
+                price: itemPrice,
+                qty: activeModalQty,
+                options: optionsText.join(', '),
+                notes: notes
+            };
+
+            cartItems.push(cartEntry);
+            updateCartUI();
+            closeProductModalForce();
+            toggleCartDrawer(true); // Open cart to show item
+        }
+
+        // CART DRAWER HANDLERS
+        function toggleCartDrawer(forceOpen = false) {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartDrawerOverlay');
+
+            if (forceOpen || drawer.classList.contains('translate-x-full')) {
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        function updateCartUI() {
+            const list = document.getElementById('cartItemsList');
+            const placeholder = document.getElementById('emptyCartPlaceholder');
+            const footer = document.getElementById('cartFooter');
+            const badge = document.getElementById('cartBadgeCount');
+            const subtotalText = document.getElementById('cartSubtotalText');
+
+            const totalQty = cartItems.reduce((sum, item) => sum + item.qty, 0);
+            badge.innerText = totalQty;
+
+            if (cartItems.length === 0) {
+                list.innerHTML = '';
+                placeholder.classList.remove('hidden');
+                footer.classList.add('hidden');
+                return;
+            }
+
+            placeholder.classList.add('hidden');
+            footer.classList.remove('hidden');
+
+            let subtotal = 0;
+            list.innerHTML = cartItems.map(item => {
+                const itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+                return `
+                    <div class="bg-cafe-cardLight dark:bg-cafe-cardDark border border-cafe-borderLight dark:border-cafe-borderDark rounded-2xl p-3.5 flex justify-between items-start gap-3">
+                        <div class="flex-1">
+                            <h4 class="font-heading font-bold text-sm">${item.name}</h4>
+                            <p class="text-[11px] text-cafe-amber font-semibold">Rs. ${item.price} x ${item.qty} = Rs. ${itemTotal}</p>
+                            ${item.options ? `<p class="text-[10px] text-cafe-mutedLight dark:text-cafe-mutedDark mt-0.5">🔹 ${item.options}</p>` : ''}
+                            ${item.notes ? `<p class="text-[10px] italic text-cafe-mutedLight dark:text-cafe-mutedDark mt-0.5">📝 "${item.notes}"</p>` : ''}
+                        </div>
+                        <button onclick="removeCartItem('${item.id}')" class="text-cafe-mutedLight hover:text-red-500 transition-colors p-1">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            subtotalText.innerText = `Rs. ${subtotal}`;
+        }
+
+        function removeCartItem(cartId) {
+            cartItems = cartItems.filter(item => item.id !== cartId);
+            updateCartUI();
+        }
+
+        // DYNAMIC WHATSAPP ORDER LAUNCHER
+        function checkoutToWhatsApp() {
+            if (cartItems.length === 0) return;
+
+            let text = `*NEW ORDER - MR. CAFE JAFFNA*\n\n`;
+            let subtotal = 0;
+
+            cartItems.forEach((item, index) => {
+                const total = item.price * item.qty;
+                subtotal += total;
+                text += `*${index + 1}. ${item.name}* (x${item.qty})\n`;
+                text += `   Price: Rs. ${total}\n`;
+                if (item.options) text += `   Pref: ${item.options}\n`;
+                if (item.notes) text += `   Note: ${item.notes}\n`;
+                text += `\n`;
+            });
+
+            text += `---------------------------\n`;
+            text += ` *TOTAL ESTIMATE: Rs. ${subtotal}*\n`;
+            text += `---------------------------\n`;
+            text += ` Pick-up / Delivery in Jaffna\n`;
+            text += `Please confirm availability & time. Thank you!`;
+
+            const encoded = encodeURIComponent(text);
+            const waUrl = `https://wa.me/94763603403?text=${encoded}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // LIGHTBOX HANDLER
+        function openLightbox(imgUrl, caption) {
+            document.getElementById('lightboxImg').src = imgUrl;
+            document.getElementById('lightboxCaption').innerText = caption;
+            document.getElementById('lightboxOverlay').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxOverlay').classList.add('hidden');
+        }
+
+        // REVIEW MODAL HANDLERS
+        function openReviewModal() {
+            const overlay = document.getElementById('reviewModalOverlay');
+            overlay.classList.remove('hidden');
+        }
+
+        function closeReviewModal(e) {
+            if (e.target.id === 'reviewModalOverlay') {
+                closeReviewModalForce();
+            }
+        }
+
+        function closeReviewModalForce() {
+            document.getElementById('reviewModalOverlay').classList.add('hidden');
+        }
+
+        // SCROLL & UI HELPERS
+        function setupScrollListeners() {
+            const scrollBar = document.getElementById('scrollProgress');
+            const backBtn = document.getElementById('backToTopBtn');
+
+            window.addEventListener('scroll', () => {
+                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (window.scrollY / totalHeight) * 100;
+                scrollBar.style.width = `${progress}%`;
+
+                if (window.scrollY > 400) {
+                    backBtn.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    backBtn.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateCurrentYear() {
+            document.getElementById('currentYear').innerText = new Date().getFullYear();
+        }
+    </script>
+</body>
+</html>
